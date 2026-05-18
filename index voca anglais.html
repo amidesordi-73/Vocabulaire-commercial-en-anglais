@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini-site – Vocabulaire commercial anglais</title>
+  <style>
+    :root{
+      --blue:#1f4f8f;
+      --blue2:#2f80ed;
+      --green:#12a879;
+      --gold:#ffd36e;
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#667085;
+      --line:#d9e3f0;
+      --ok:#157347;
+      --bad:#b42318;
+      --shadow:0 16px 35px rgba(31,79,143,.14);
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(47,128,237,.16), transparent 34rem),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 48%, #eef4fb 100%);
+      line-height:1.55;
+    }
+
+    header{
+      background:linear-gradient(125deg, var(--blue), var(--blue2) 55%, var(--green));
+      color:white;
+      padding:34px 18px 46px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    header::after{
+      content:"";
+      position:absolute;
+      right:-70px;
+      top:-80px;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:rgba(255,255,255,.12);
+    }
+
+    .wrap{
+      width:min(1120px, calc(100% - 28px));
+      margin:auto;
+      position:relative;
+      z-index:1;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:26px;
+      flex-wrap:wrap;
+    }
+
+    .logo{
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      background:white;
+      color:var(--blue);
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      box-shadow:0 10px 20px rgba(0,0,0,.14);
+    }
+
+    .brand strong{font-size:1.05rem}
+    .brand span{opacity:.9;font-size:.95rem}
+
+    h1{
+      font-size:clamp(2rem, 5vw, 4rem);
+      line-height:1.04;
+      margin:0 0 14px;
+      max-width:900px;
+    }
+
+    .subtitle{
+      font-size:1.16rem;
+      max-width:850px;
+      opacity:.95;
+      margin:0 0 25px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .btn, button{
+      border:0;
+      border-radius:999px;
+      padding:12px 18px;
+      font-weight:800;
+      cursor:pointer;
+      transition:.2s transform, .2s box-shadow, .2s background;
+      font-size:.95rem;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      text-decoration:none;
+    }
+
+    .btn-primary{
+      background:white;
+      color:var(--blue);
+      box-shadow:0 10px 20px rgba(0,0,0,.13);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.18);
+      color:white;
+      border:1px solid rgba(255,255,255,.34);
+    }
+
+    .btn:hover, button:hover{
+      transform:translateY(-1px);
+      box-shadow:0 8px 18px rgba(31,79,143,.18);
+    }
+
+    main{padding:28px 0 54px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 300px 1fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    aside{
+      position:sticky;
+      top:14px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    aside h2{
+      font-size:1.05rem;
+      margin:0 0 12px;
+      color:var(--blue);
+    }
+
+    .toc{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-bottom:18px;
+    }
+
+    .toc a{
+      text-decoration:none;
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:14px;
+      background:#f8fbff;
+      border:1px solid transparent;
+      font-weight:700;
+      font-size:.94rem;
+    }
+
+    .toc a:hover{
+      border-color:#bcd3f5;
+      color:var(--blue);
+    }
+
+    .toolbox{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .toolbox input{
+      width:100%;
+      border:1px solid var(--line);
+      padding:12px 14px;
+      border-radius:14px;
+      font-size:.95rem;
+      outline:none;
+    }
+
+    .toolbox input:focus{
+      border-color:var(--blue2);
+      box-shadow:0 0 0 4px rgba(47,128,237,.12);
+    }
+
+    .content{
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+    }
+
+    .card{
+      background:rgba(255,255,255,.96);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .intro{
+      padding:26px;
+    }
+
+    .intro h2, section h2{
+      margin:0 0 10px;
+      color:var(--blue);
+      font-size:1.55rem;
+    }
+
+    .intro p{margin:0 0 12px}
+
+    .badges{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .badge{
+      background:#edf5ff;
+      color:var(--blue);
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:.88rem;
+    }
+
+    section.card{padding:0}
+
+    .section-head{
+      padding:22px 24px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      background:linear-gradient(180deg, #ffffff, #f9fcff);
+    }
+
+    .section-head p{
+      margin:4px 0 0;
+      color:var(--muted);
+    }
+
+    .count{
+      white-space:nowrap;
+      background:var(--gold);
+      color:#493100;
+      border-radius:999px;
+      padding:7px 11px;
+      font-weight:900;
+      font-size:.9rem;
+    }
+
+    .vocab-table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    .vocab-table th{
+      background:#f0f6ff;
+      color:var(--blue);
+      text-align:left;
+      padding:13px 16px;
+      font-size:.92rem;
+      border-bottom:1px solid var(--line);
+    }
+
+    .vocab-table td{
+      padding:13px 16px;
+      border-bottom:1px solid #edf2f7;
+      vertical-align:middle;
+    }
+
+    .vocab-table tr:last-child td{border-bottom:0}
+
+    .en{
+      font-weight:900;
+      color:#111827;
+    }
+
+    .fr{
+      color:#374151;
+    }
+
+    .small-note{
+      color:var(--muted);
+      font-size:.88rem;
+      margin-top:5px;
+    }
+
+    .audio-cell{
+      display:flex;
+      gap:7px;
+      flex-wrap:wrap;
+    }
+
+    .sound{
+      padding:8px 10px;
+      border-radius:12px;
+      background:#edf5ff;
+      color:var(--blue);
+      border:1px solid #cfe0f7;
+      font-weight:900;
+    }
+
+    .sound.frbtn{
+      background:#ecfdf5;
+      color:#08765a;
+      border-color:#b7ead7;
+    }
+
+    .quiz{
+      padding:24px;
+    }
+
+    .quiz-box{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:16px;
+    }
+
+    .question{
+      background:#f8fbff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      min-height:170px;
+    }
+
+    .question h3{margin:0 0 10px;color:var(--blue)}
+
+    .answer-list{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .answer{
+      text-align:left;
+      background:white;
+      color:var(--text);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 14px;
+      font-weight:800;
+    }
+
+    .answer.correct{
+      background:#e8f7ef;
+      border-color:#a6dfbf;
+      color:var(--ok);
+    }
+
+    .answer.wrong{
+      background:#fff1f0;
+      border-color:#ffc7c1;
+      color:var(--bad);
+    }
+
+    .quiz-controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .blue-button{
+      background:var(--blue);
+      color:white;
+    }
+
+    .green-button{
+      background:var(--green);
+      color:white;
+    }
+
+    .light-button{
+      background:#eef4fb;
+      color:var(--blue);
+      border:1px solid #d4e4f7;
+    }
+
+    .result{
+      margin-top:14px;
+      font-weight:900;
+      color:var(--blue);
+      min-height:24px;
+    }
+
+    .flashcards{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:14px;
+      margin-top:16px;
+    }
+
+    .flashcard{
+      min-height:130px;
+      perspective:1000px;
+      cursor:pointer;
+    }
+
+    .flash-inner{
+      width:100%;
+      height:100%;
+      min-height:130px;
+      position:relative;
+      transform-style:preserve-3d;
+      transition: transform .5s;
+    }
+
+    .flashcard.flipped .flash-inner{
+      transform:rotateY(180deg);
+    }
+
+    .flash-front, .flash-back{
+      position:absolute;
+      inset:0;
+      backface-visibility:hidden;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#f8fbff;
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:10px;
+    }
+
+    .flash-front strong, .flash-back strong{
+      font-size:1.15rem;
+    }
+
+    .flash-back{
+      transform:rotateY(180deg);
+      background:#ecfdf5;
+    }
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      padding:30px 10px;
+      border-top:1px solid var(--line);
+      background:white;
+    }
+
+    .hidden{display:none !important}
+
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+      aside{position:relative; top:0}
+      .quiz-box{grid-template-columns:1fr}
+      .flashcards{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width:640px){
+      .vocab-table, .vocab-table tbody, .vocab-table tr, .vocab-table td, .vocab-table th{
+        display:block;
+      }
+
+      .vocab-table thead{display:none}
+
+      .vocab-table tr{
+        border-bottom:1px solid var(--line);
+        padding:10px 0;
+      }
+
+      .vocab-table td{
+        border-bottom:0;
+        padding:7px 16px;
+      }
+
+      .vocab-table td::before{
+        content:attr(data-label);
+        display:block;
+        font-size:.76rem;
+        text-transform:uppercase;
+        letter-spacing:.06em;
+        color:var(--muted);
+        font-weight:900;
+        margin-bottom:3px;
+      }
+
+      .flashcards{grid-template-columns:1fr}
+    }
+
+    @media print{
+      header, aside, .quiz, #flashcards, footer{display:none}
+      body{background:white}
+      .grid{display:block}
+      .card{box-shadow:none;border:1px solid #ddd;break-inside:avoid}
+      .sound{display:none}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brand">
+                  <strong>MY-CUP-OF-T</strong><br>
+          <span>Mini-site pédagogique – Anglais professionnel</span>
+        </div>
+      </div>
+
+      <h1>Le vocabulaire commercial en anglais : la vente & le commerce / Trade </h1>
+      <p class="subtitle">
+        Révisez les mots et expressions utiles pour parler de vente, de clients,
+        de commandes, de prix et de négociation. Chaque terme peut être écouté
+        en anglais et en français.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#metiers">Commencer la fiche</a>
+        <a class="btn btn-secondary" href="#quiz">Faire le quiz</a>
+        <a class="btn btn-secondary" href="#flashcards">Cartes mémo</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap grid">
+    <aside aria-label="Navigation du mini-site">
+      <h2>Table des matières</h2>
+      <nav class="toc">
+        <a href="#metiers">1. Métiers et acteurs</a>
+        <a href="#verbes">2. Verbes de la vente</a>
+        <a href="#lexique">3. Lexique commercial</a>
+        <a href="#expressions">4. Expressions utiles</a>
+        <a href="#quiz">5. Quiz rapide</a>
+        <a href="#flashcards">6. Cartes mémo</a>
+      </nav>
+
+      <div class="toolbox">
+        <label for="search"><strong>Rechercher un mot</strong></label>
+        <input id="search" type="search" placeholder="Ex. client, order, discount..." />
+        <button class="light-button" onclick="resetSearch()">Tout afficher</button>
+        <button class="light-button" onclick="window.print()">Imprimer la fiche</button>
+      </div>
+    </aside>
+
+    <div class="content">
+      <article class="card intro">
+        <h2>Objectif pédagogique</h2>
+        <p>
+          Cette ressource aide les stagiaires à associer un vocabulaire commercial
+          courant en français et en anglais, puis à s’entraîner à la prononciation
+          grâce à la synthèse vocale du navigateur.
+        </p>
+        <p>
+          Cliquez sur <strong>EN</strong> pour écouter le mot anglais, ou sur
+          <strong>FR</strong> pour entendre la traduction française.
+        </p>
+        <div class="badges">
+          <span class="badge">Niveau A2-B1</span>
+          <span class="badge">Anglais professionnel</span>
+          <span class="badge">Audio intégré</span>
+          <span class="badge">Quiz interactif</span>
+        </div>
+      </article>
+
+      <section class="card" id="metiers">
+        <div class="section-head">
+          <div>
+            <h2>1. Les métiers et acteurs de la vente</h2>
+            <p>Les personnes que l’on rencontre dans un contexte commercial.</p>
+          </div>
+          <span class="count" id="count-metiers"></span>
+        </div>
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Anglais</th><th>Français</th><th>Audio</th></tr>
+          </thead>
+          <tbody id="tbody-metiers"></tbody>
+        </table>
+      </section>
+
+      <section class="card" id="verbes">
+        <div class="section-head">
+          <div>
+            <h2>2. Les verbes de la vente</h2>
+            <p>Les actions essentielles : vendre, acheter, négocier, livrer, rembourser.</p>
+          </div>
+          <span class="count" id="count-verbes"></span>
+        </div>
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Anglais</th><th>Français</th><th>Audio</th></tr>
+          </thead>
+          <tbody id="tbody-verbes"></tbody>
+        </table>
+      </section>
+
+      <section class="card" id="lexique">
+        <div class="section-head">
+          <div>
+            <h2>3. Le lexique commercial courant</h2>
+            <p>Les mots indispensables pour parler de commerce, de prix et de produits.</p>
+          </div>
+          <span class="count" id="count-lexique"></span>
+        </div>
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Anglais</th><th>Français</th><th>Audio</th></tr>
+          </thead>
+          <tbody id="tbody-lexique"></tbody>
+        </table>
+      </section>
+
+      <section class="card" id="expressions">
+        <div class="section-head">
+          <div>
+            <h2>4. Les expressions utiles</h2>
+            <p>Des expressions simples pour communiquer avec un client ou un fournisseur.</p>
+          </div>
+          <span class="count" id="count-expressions"></span>
+        </div>
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Anglais</th><th>Français</th><th>Audio</th></tr>
+          </thead>
+          <tbody id="tbody-expressions"></tbody>
+        </table>
+      </section>
+
+      <section class="card quiz" id="quiz">
+        <h2>5. Quiz rapide</h2>
+        <p>
+          Écoutez ou lisez le mot anglais, puis choisissez la bonne traduction française.
+        </p>
+        <div class="quiz-box">
+          <div class="question">
+            <h3>Question</h3>
+            <p id="quiz-question">Cliquez sur “Nouvelle question”.</p>
+            <div class="quiz-controls">
+              <button class="sound" id="listen-question" type="button">🔊 Écouter EN</button>
+            </div>
+          </div>
+          <div class="question">
+            <h3>Réponses</h3>
+            <div class="answer-list" id="answers"></div>
+          </div>
+        </div>
+        <div class="quiz-controls">
+          <button class="blue-button" onclick="newQuestion()">Nouvelle question</button>
+          <button class="green-button" onclick="resetQuiz()">Recommencer le score</button>
+        </div>
+        <div class="result" id="quiz-result"></div>
+      </section>
+
+      <section class="card quiz" id="flashcards">
+        <h2>6. Cartes mémo</h2>
+        <p>Cliquez sur une carte pour retourner la traduction.</p>
+        <div class="flashcards" id="flash-list"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    Mini-site pédagogique original – Avenir Pro Formations – Anglais commercial.
+  </footer>
+
+  <script>
+    const categories = {
+      metiers: [
+        {en:"salesperson", fr:"commercial / vendeur"},
+        {en:"sales representative", fr:"représentant commercial"},
+        {en:"account manager", fr:"responsable de compte"},
+        {en:"buyer", fr:"acheteur"},
+        {en:"customer", fr:"client"},
+        {en:"prospect", fr:"prospect"},
+        {en:"supplier", fr:"fournisseur"},
+        {en:"retailer", fr:"détaillant"},
+        {en:"wholesaler", fr:"grossiste"},
+        {en:"competitor", fr:"concurrent"},
+        {en:"shop assistant", fr:"vendeur en magasin"},
+        {en:"cashier", fr:"hôte / hôtesse de caisse"},
+        {en:"store manager", fr:"responsable de magasin"},
+        {en:"consumer", fr:"consommateur"},
+        {en:"distributor", fr:"distributeur"}
+      ],
+      verbes: [
+        {en:"to sell", fr:"vendre"},
+        {en:"to buy", fr:"acheter"},
+        {en:"to order", fr:"commander"},
+        {en:"to pay", fr:"payer"},
+        {en:"to quote", fr:"faire un devis"},
+        {en:"to invoice", fr:"facturer"},
+        {en:"to deliver", fr:"livrer"},
+        {en:"to refund", fr:"rembourser"},
+        {en:"to exchange", fr:"échanger"},
+        {en:"to negotiate", fr:"négocier"},
+        {en:"to give a discount", fr:"accorder une remise"},
+        {en:"to launch a product", fr:"lancer un produit"},
+        {en:"to compare prices", fr:"comparer les prix"},
+        {en:"to close a sale", fr:"conclure une vente"},
+        {en:"to follow up", fr:"relancer / assurer le suivi"},
+        {en:"to complain", fr:"se plaindre"},
+        {en:"to cancel an order", fr:"annuler une commande"},
+        {en:"to stock up", fr:"réapprovisionner"},
+        {en:"to advertise", fr:"faire de la publicité"},
+        {en:"to reach a target", fr:"atteindre un objectif"}
+      ],
+      lexique: [
+        {en:"price", fr:"prix"},
+        {en:"cost", fr:"coût"},
+        {en:"discount", fr:"remise"},
+        {en:"invoice", fr:"facture"},
+        {en:"quotation", fr:"devis"},
+        {en:"order", fr:"commande"},
+        {en:"delivery", fr:"livraison"},
+        {en:"payment", fr:"paiement"},
+        {en:"receipt", fr:"ticket / reçu"},
+        {en:"warranty", fr:"garantie"},
+        {en:"after-sales service", fr:"service après-vente"},
+        {en:"market research", fr:"étude de marché"},
+        {en:"brand", fr:"marque"},
+        {en:"product range", fr:"gamme de produits"},
+        {en:"target market", fr:"marché cible"},
+        {en:"turnover", fr:"chiffre d’affaires"},
+        {en:"profit margin", fr:"marge bénéficiaire"},
+        {en:"point of sale", fr:"point de vente"},
+        {en:"e-commerce", fr:"commerce en ligne"},
+        {en:"stock", fr:"stock"},
+        {en:"warehouse", fr:"entrepôt"},
+        {en:"customer loyalty", fr:"fidélité client"},
+        {en:"lead", fr:"contact commercial"},
+        {en:"sales target", fr:"objectif de vente"},
+        {en:"business proposal", fr:"proposition commerciale"}
+      ],
+      expressions: [
+        {en:"Can I help you?", fr:"Puis-je vous aider ?"},
+        {en:"What are you looking for?", fr:"Que recherchez-vous ?"},
+        {en:"It is good value for money.", fr:"C’est un bon rapport qualité-prix."},
+        {en:"We can offer you a discount.", fr:"Nous pouvons vous proposer une remise."},
+        {en:"The product is currently out of stock.", fr:"Le produit est actuellement en rupture de stock."},
+        {en:"Your order has been shipped.", fr:"Votre commande a été expédiée."},
+        {en:"Could you send me a quotation?", fr:"Pourriez-vous m’envoyer un devis ?"},
+        {en:"I would like to place an order.", fr:"Je voudrais passer une commande."},
+        {en:"What is your best price?", fr:"Quel est votre meilleur prix ?"},
+        {en:"Let’s get down to business.", fr:"Passons aux choses sérieuses."},
+        {en:"We need to follow up with the client.", fr:"Nous devons relancer le client."},
+        {en:"The deal is closed.", fr:"L’accord est conclu."}
+      ]
+    };
+
+    const allItems = Object.values(categories).flat();
+    let currentQuestion = null;
+    let score = 0;
+    let total = 0;
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function speak(text, lang){
+      if(!("speechSynthesis" in window)){
+        alert("La synthèse vocale n'est pas disponible dans ce navigateur.");
+        return;
+      }
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = lang;
+      utterance.rate = lang === "en-GB" ? 0.88 : 0.95;
+      speechSynthesis.speak(utterance);
+    }
+
+    function renderTables(){
+      for(const [key, list] of Object.entries(categories)){
+        const tbody = document.getElementById("tbody-" + key);
+        const count = document.getElementById("count-" + key);
+        count.textContent = list.length + " mots";
+        tbody.innerHTML = list.map(item => `
+          <tr class="vocab-row" data-search="${escapeHtml((item.en + ' ' + item.fr).toLowerCase())}">
+            <td data-label="Anglais"><span class="en">${escapeHtml(item.en)}</span></td>
+            <td data-label="Français"><span class="fr">${escapeHtml(item.fr)}</span></td>
+            <td data-label="Audio">
+              <div class="audio-cell">
+                <button class="sound" type="button" onclick="speak('${escapeHtml(item.en)}', 'en-GB')">🔊 EN</button>
+                <button class="sound frbtn" type="button" onclick="speak('${escapeHtml(item.fr)}', 'fr-FR')">🔊 FR</button>
+              </div>
+            </td>
+          </tr>
+        `).join("");
+      }
+    }
+
+    function resetSearch(){
+      document.getElementById("search").value = "";
+      filterRows("");
+    }
+
+    function filterRows(query){
+      const q = query.trim().toLowerCase();
+      document.querySelectorAll(".vocab-row").forEach(row => {
+        const haystack = row.dataset.search || "";
+        row.classList.toggle("hidden", q && !haystack.includes(q));
+      });
+    }
+
+    function shuffle(array){
+      return [...array].sort(() => Math.random() - 0.5);
+    }
+
+    function newQuestion(){
+      const item = allItems[Math.floor(Math.random() * allItems.length)];
+      currentQuestion = item;
+      document.getElementById("quiz-question").innerHTML =
+        `<strong style="font-size:1.4rem">${escapeHtml(item.en)}</strong><br>
+         <span class="small-note">Quelle est la bonne traduction ?</span>`;
+
+      const wrongAnswers = shuffle(allItems.filter(x => x.fr !== item.fr)).slice(0,3);
+      const options = shuffle([item, ...wrongAnswers]);
+
+      document.getElementById("answers").innerHTML = options.map(option => `
+        <button class="answer" onclick="checkAnswer(this, '${escapeHtml(option.fr)}')">
+          ${escapeHtml(option.fr)}
+        </button>
+      `).join("");
+
+      document.getElementById("quiz-result").textContent = `Score : ${score} / ${total}`;
+      document.getElementById("listen-question").onclick = () => speak(item.en, "en-GB");
+    }
+
+    function checkAnswer(button, selectedFr){
+      if(!currentQuestion) return;
+
+      const buttons = document.querySelectorAll(".answer");
+      buttons.forEach(btn => btn.disabled = true);
+
+      total++;
+      if(selectedFr === currentQuestion.fr){
+        score++;
+        button.classList.add("correct");
+        document.getElementById("quiz-result").textContent =
+          `Bonne réponse ✅ Score : ${score} / ${total}`;
+      } else {
+        button.classList.add("wrong");
+        buttons.forEach(btn => {
+          if(btn.textContent.trim() === currentQuestion.fr){
+            btn.classList.add("correct");
+          }
+        });
+        document.getElementById("quiz-result").textContent =
+          `Réponse attendue : ${currentQuestion.fr}. Score : ${score} / ${total}`;
+      }
+    }
+
+    function resetQuiz(){
+      score = 0;
+      total = 0;
+      currentQuestion = null;
+      document.getElementById("quiz-question").textContent = "Cliquez sur “Nouvelle question”.";
+      document.getElementById("answers").innerHTML = "";
+      document.getElementById("quiz-result").textContent = "Score remis à zéro.";
+      document.getElementById("listen-question").onclick = () => {};
+    }
+
+    function renderFlashcards(){
+      const cards = shuffle(allItems).slice(0,12);
+      document.getElementById("flash-list").innerHTML = cards.map(item => `
+        <div class="flashcard" onclick="this.classList.toggle('flipped')">
+          <div class="flash-inner">
+            <div class="flash-front">
+              <strong>${escapeHtml(item.en)}</strong>
+              <button class="sound" type="button" onclick="event.stopPropagation(); speak('${escapeHtml(item.en)}', 'en-GB')">🔊 Écouter</button>
+            </div>
+            <div class="flash-back">
+              <strong>${escapeHtml(item.fr)}</strong>
+              <button class="sound frbtn" type="button" onclick="event.stopPropagation(); speak('${escapeHtml(item.fr)}', 'fr-FR')">🔊 Écouter</button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    document.getElementById("search").addEventListener("input", e => filterRows(e.target.value));
+
+    renderTables();
+    renderFlashcards();
+    newQuestion();
+  </script>
+</body>
+</html>
